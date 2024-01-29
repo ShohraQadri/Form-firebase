@@ -179,7 +179,7 @@ function ContactForm() {
 
             {val.map((value) => (
                 <div key={value.id} className='my-3  items-center flex justify-between border-2 max-w-md p-2  m-auto'>
-                    <div>
+                    <div className='basis-32 grow'>
                         <h1>{value.name}</h1>
                         <h1>{value.email}</h1>
                         <h1>{value.message}</h1>
