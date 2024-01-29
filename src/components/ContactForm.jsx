@@ -120,7 +120,7 @@ function ContactForm() {
     };
 
     return (
-        <>
+        <div className='mx-2 '>
             <h1 className='text-center font-bold text-yellow-400 mt-8'>Form</h1>
             <form className="max-w-md mx-auto border-2 p-2 mt-3" method="POST">
                 <div className="mb-4">
@@ -193,7 +193,7 @@ function ContactForm() {
                 </div >
             ))
             }
-        </>
+        </div>
     );
 }
 
