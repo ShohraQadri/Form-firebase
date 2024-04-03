@@ -9,7 +9,7 @@ function ContactForm() {
         message: '',
         id: ''
     });
-
+    // use state
     const [val, setVal] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
 
@@ -52,7 +52,7 @@ function ContactForm() {
                     })
                 });
             }
-
+            // Reset edit after submission
             if (response.ok) {
                 setUser({
                     name: '',
@@ -63,7 +63,7 @@ function ContactForm() {
                 alert(isEditing ? 'Update Successful' : 'Submit Successfully');
                 formReset();
                 getData();
-                setIsEditing(false); // Reset edit mode after submission
+                setIsEditing(false);
             } else {
                 alert(`Failed to ${isEditing ? 'update' : 'submit'}. Please try again.`);
             }
@@ -115,7 +115,7 @@ function ContactForm() {
                 message: editedItem.message,
                 id: id
             });
-            setIsEditing(true); // Set edit mode
+            setIsEditing(true);
         }
     };
     const totalCount = val.length;
@@ -168,6 +168,7 @@ function ContactForm() {
                         onChange={getUserData}
                     ></textarea>
                 </div>
+                {/* submit and update button */}
                 <button
                     className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
@@ -176,6 +177,7 @@ function ContactForm() {
                     {isEditing ? 'Update' : 'Submit'}
                 </button>
             </form>
+            {/* data count */}
             <div className="text-center text-gray-500 font-bold mb-4 mt-4 ">
                 Total Count: {totalCount}
             </div>
@@ -186,6 +188,7 @@ function ContactForm() {
                         <h1 className=' font-semiBold capitalize'>Email: <span className='font-base'>{value.email}</span></h1><h1 className=' font-base capitalize'>Message: <span className='font-base'>{value.message}</span></h1>
 
                     </div>
+                    {/* delete and edit b utton */}
                     <div className='buttons flex mt-2 gap-1'>
                         <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
                             type="submit" onClick={() => handleDelete(value.id)} > <p className='flex  gap-2 items-center justify-around'>  <span>Delete</span> <span><IoTrashBin /></span> </p>
