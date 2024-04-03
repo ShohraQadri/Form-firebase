@@ -118,10 +118,10 @@ function ContactForm() {
             setIsEditing(true); // Set edit mode
         }
     };
-
+    const totalCount = val.length;
     return (
         <div className='mx-2 '>
-            <h1 className='text-center font-bold text-yellow-400 mt-8'>Form</h1>
+            <h1 className='text-center font-bold text-black-400 text-2xl mt-8'>Form</h1>
             <form className="max-w-md mx-auto border-2 p-2 mt-3" method="POST">
                 <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -176,19 +176,23 @@ function ContactForm() {
                     {isEditing ? 'Update' : 'Submit'}
                 </button>
             </form>
-
+            <div className="text-center text-gray-500 font-bold mb-4 mt-4 ">
+                Total Count: {totalCount}
+            </div>
             {val.map((value) => (
-                <div key={value.id} className='my-3  items-center flex justify-between border-2 max-w-md p-2  m-auto'>
-                    <div className='basis-32 grow'>
-                        <h1>{value.name}</h1>
-                        <h1>{value.email}</h1>
-                        <h1>{value.message}</h1>
+                <div key={value.id} className='my-3 flex-col lg:flex-row gap-1 lg:items-center flex justify-between border-2 max-w-md p-2  m-auto'>
+                    <div className='lg:basis-32 basis-0 grow text-base'>
+                        <h1 className=' font-semiBold capitalize'>Name: <span className='font-base'>{value.name}</span></h1>
+                        <h1 className=' font-semiBold capitalize'>Email: <span className='font-base'>{value.email}</span></h1><h1 className=' font-base capitalize'>Message: <span className='font-base'>{value.message}</span></h1>
+
                     </div>
-                    <div>
-                        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="submit" onClick={() => handleDelete(value.id)} > <p className='flex gap-2 items-center'>  <span>Delete</span> <span><IoTrashBin /></span> </p></button>
+                    <div className='buttons flex mt-2 gap-1'>
+                        <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
+                            type="submit" onClick={() => handleDelete(value.id)} > <p className='flex  gap-2 items-center justify-around'>  <span>Delete</span> <span><IoTrashBin /></span> </p>
+                        </button>
                         <button className="bg-green-500 ms-2 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="submit" onClick={() => handleEdit(value.id)}><p className='flex gap-2 items-center'><span>Edit</span><span> <IoPencil /></span></p></button>
+                            type="submit" onClick={() => handleEdit(value.id)}><p className='flex gap-2 items-center justify-around'><span>Edit</span><span> <IoPencil /></span></p>
+                        </button>
                     </div>
                 </div >
             ))
